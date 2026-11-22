@@ -95,7 +95,7 @@ window.MEDIA = {
 
   // Photography: add as many as you like; "ar" is the placeholder shape (width / height)
   photos: [
-    { type: 'image', src: 'assets/pics/photography/1.png', caption: '', ar: '4/5' },
+    { type: 'image', src: 'assets/pics/photography/1.jpg', caption: '', ar: '4/5' },
     { type: 'image', src: 'assets/pics/photography/2.jpg', caption: '', ar: '3/2' },
     { type: 'image', src: 'assets/pics/photography/3.jpg', caption: '', ar: '1/1' },
     { type: 'image', src: 'assets/pics/photography/4.jpg', caption: '', ar: '4/5' },
