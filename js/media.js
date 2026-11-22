@@ -97,10 +97,10 @@ window.MEDIA = {
   photos: [
     { type: 'image', src: 'assets/pics/photography/1.png', caption: '', ar: '4/5' },
     { type: 'image', src: 'assets/pics/photography/2.jpg', caption: '', ar: '3/2' },
-    { type: 'image', src: 'assets/pics/photography/3.JPG', caption: '', ar: '1/1' },
-    { type: 'image', src: 'assets/pics/photography/4.JPG', caption: '', ar: '4/5' },
-    { type: 'image', src: 'assets/pics/photography/6.JPG', caption: '', ar: '2/3' },
-    { type: 'image', src: 'assets/pics/photography/7.JPG', caption: '', ar: '3/2' },
-    { type: 'image', src: 'assets/pics/photography/5.JPG', caption: '', ar: '3/2' },
+    { type: 'image', src: 'assets/pics/photography/3.jpg', caption: '', ar: '1/1' },
+    { type: 'image', src: 'assets/pics/photography/4.jpg', caption: '', ar: '4/5' },
+    { type: 'image', src: 'assets/pics/photography/6.jpg', caption: '', ar: '2/3' },
+    { type: 'image', src: 'assets/pics/photography/7.jpg', caption: '', ar: '3/2' },
+    { type: 'image', src: 'assets/pics/photography/5.jpg', caption: '', ar: '3/2' },
   ]
 };
