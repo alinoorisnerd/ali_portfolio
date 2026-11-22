@@ -1,0 +1,107 @@
+/* =========================================================
+   updates.css — loaded after style.css, so these rules win.
+   ========================================================= */
+
+/* ---------- 1. Captions UNDER images (not on top of them) ---------- */
+.carousel, .carousel.tall, .carousel.short, .carousel.portrait { aspect-ratio: auto; }
+.carousel { --ar: 16 / 10; background: var(--surface-2); }
+.carousel.tall { --ar: 4 / 4.2; }
+.carousel.short { --ar: 4 / 3; }
+.carousel.portrait { --ar: 3 / 4; }
+.carousel::after { display: none; }                       /* no dark scrim needed any more */
+.carousel-track { height: auto; align-items: flex-start; }
+.carousel-slide { height: auto; display: flex; flex-direction: column; }
+.carousel-slide > img,
+.carousel-slide > video,
+.carousel-slide > iframe,
+.carousel-slide > .media-ph { width: 100%; height: auto; aspect-ratio: var(--ar); object-fit: cover; }
+.carousel.fit .carousel-slide > img,
+.carousel.fit .carousel-slide > video { object-fit: contain; background: var(--bg-2); }
+.carousel-slide figcaption {
+  position: static; padding: 10px 14px; min-height: 42px;
+  font-size: 14px; font-weight: 500; line-height: 1.4; color: var(--text); text-shadow: none;
+  background: var(--surface-2); border-top: 1px solid var(--line);
+}
+.carousel-dots { position: static; padding: 8px 0 10px; background: var(--surface-2); }
+.carousel-dots button::before { background: var(--line-2); box-shadow: none; }
+.carousel-dots button[aria-current="true"]::before { background: var(--accent); }
+.carousel-btn { top: 42%; }
+
+/* ---------- 2. Hover on an image to enlarge it (big) ---------- */
+.carousel, .video-frame, .reveal-scale > video, .cert-thumb {
+  transition: transform .45s var(--ease), box-shadow .45s var(--ease), border-color .3s;
+}
+.carousel:hover, .video-frame:hover, .reveal-scale > video:hover, .cert:hover .cert-thumb {
+  transform: scale(var(--hover-zoom, 1.25));          /* change 1.25 to make it bigger or smaller */
+  box-shadow: 0 40px 90px -20px rgba(0, 0, 0, .75);
+  border-color: rgba(var(--trace), .6);
+  position: relative; z-index: 20;
+}
+/* let the enlarged image grow outside its card instead of being cut off */
+.card:has(.carousel:hover), .card:has(.video-frame:hover), .card:has(.reveal-scale > video:hover), .cert:hover {
+  overflow: visible; z-index: 20;
+}
+.t-item:has(.carousel:hover), .t-item:has(.video-frame:hover) { position: relative; z-index: 20; }
+.about-sticky .carousel { --hover-zoom: 1.08; }        /* the big About photo only grows a little */
+@media (hover: none) { .carousel:hover, .video-frame:hover, .reveal-scale > video:hover, .cert:hover .cert-thumb { transform: none; } }
+
+/* hide a carousel that has no images yet (instead of showing an empty line) */
+.carousel:not(:has(.carousel-slide)) { display: none; }
+
+/* center media (and text) vertically in a card, e.g. the Hotspot video */
+.project.center-media { justify-content: center; }
+.project.center-media .reveal-scale > video { margin-inline: auto; max-height: 520px; width: auto; max-width: 100%; }
+
+/* ---------- 3. New hero chip (flat, clean, signals running through the traces) ---------- */
+.hero-chip-wrap { aspect-ratio: 1; max-width: 480px; perspective: none; }
+.chip.hero-chip {
+  width: 100%; height: auto; aspect-ratio: auto; overflow: visible; transform-style: flat;
+  transform: perspective(1100px) rotateX(calc(var(--rx, 18deg) * .35 - 6deg)) rotateY(calc(var(--ry, -24deg) * .35 + 8deg));
+  transition: transform .6s var(--ease);
+}
+.hero-chip .hc-float { animation: hcFloat 6s ease-in-out infinite; }
+@keyframes hcFloat { 50% { transform: translateY(-12px); } }
+.hc-shadow { fill: rgba(0, 0, 0, .35); filter: blur(7px); transform-box: view-box; transform-origin: 240px 452px; animation: hcShadow 6s ease-in-out infinite; }
+:root[data-theme="light"] .hc-shadow { fill: rgba(16, 24, 32, .18); }
+@keyframes hcShadow { 50% { transform: scale(.85); opacity: .6; } }
+.hc-trace { fill: none; stroke: rgba(var(--trace-dim), .55); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.hc-pad { fill: var(--bg); stroke: rgba(var(--trace-dim), .85); stroke-width: 2; }
+.hc-pulse {
+  fill: none; stroke: rgb(var(--trace)); stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round;
+  stroke-dasharray: 18 282; stroke-dashoffset: 300; animation: hcPulse 4s linear infinite;
+  filter: drop-shadow(0 0 4px rgba(var(--trace), .9));
+}
+@keyframes hcPulse { from { stroke-dashoffset: 300; } to { stroke-dashoffset: 0; } }
+.hc-pin { fill: var(--copper); }
+.hc-pkg { stroke: #34465C; stroke-width: 1.5; }
+.hc-notch { fill: #3A4B60; }
+.hc-die { filter: drop-shadow(0 0 16px rgba(var(--trace), .45)); }
+.hc-die-base { fill: #0B1A17; }
+.hc-gridline { stroke: rgba(var(--trace), .18); stroke-width: 1; }
+.hc-core { fill: rgba(var(--trace), .10); stroke: rgba(var(--trace), .45); stroke-width: 1; animation: hcCore 2.8s ease-in-out infinite; }
+@keyframes hcCore { 50% { fill: rgba(var(--trace), .34); } }
+.hc-die-edge { fill: none; stroke: rgb(var(--trace)); stroke-opacity: .7; stroke-width: 1.5; }
+.hc-sweep { animation: hcSweep 3.6s ease-in-out infinite; }
+@keyframes hcSweep { from { transform: translateX(0); } to { transform: translateX(240px); } }
+.hc-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: .12em; fill: #8FA3B8; }
+
+/* ---------- 4. eBrain card: text on top, chart + video side by side below ---------- */
+.job.stacked { grid-template-columns: minmax(0, 1fr); }
+.media-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; align-items: stretch; margin-top: 4px; }
+.video-frame { border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--line); background: #000; display: flex; align-items: center; min-height: 220px; }
+.video-frame video { width: 100%; height: 100%; object-fit: cover; display: block; }
+@media (max-width: 760px) { .media-pair { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- 5. Your standalone videos (modRUN, robot, Hotspot) scale to their card ---------- */
+.reveal-scale > video { width: 100%; height: auto; display: block; border-radius: var(--radius-sm); border: 1px solid var(--line); background: #000; }
+
+/* ---------- 6. Certificates: portrait, whole image visible ---------- */
+.cert-thumb { aspect-ratio: 3 / 4; display: grid; place-items: center; background: var(--bg-2); }
+.cert-thumb img { object-fit: contain; padding: 8px; }
+/* stop the card tilt fighting the hover zoom (caused the bouncing) */
+[data-tilt]:has(.carousel:hover),
+[data-tilt]:has(.video-frame:hover),
+[data-tilt]:has(.reveal-scale > video:hover) {
+  transform: none !important;
+  transition: transform .3s var(--ease);
+}

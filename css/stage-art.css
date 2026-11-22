@@ -1,0 +1,41 @@
+/* =========================================================
+   modRUN stage illustrations (six stages)
+   ========================================================= */
+.stage-art { position: relative; width: 100%; max-width: 460px; aspect-ratio: 4 / 3; margin-inline: auto; }
+.stage-art .art {
+  position: absolute; inset: 0; width: 100%; height: 100%; display: block;
+  opacity: 0; transform: translateY(14px) scale(.97); pointer-events: none;
+  transition: opacity .5s var(--ease), transform .5s var(--ease);
+  filter: drop-shadow(0 24px 40px rgba(0, 0, 0, .35));
+}
+.stage-art .art.on { opacity: 1; transform: none; }
+.art-bg { fill: #13203B; }
+.art-deco rect { fill: none; stroke: #24365C; stroke-width: 2; }
+.c-cream { fill: #F4EFE6; } .c-teal { fill: #3FC1A5; } .c-orange { fill: #E07B39; }
+.c-panel { fill: #182A4B; stroke: #2A3F66; stroke-width: 1.5; }
+.art text { font-family: var(--font-mono); }
+.t-ink { fill: #1B2A4A; } .t-cream { fill: #F4EFE6; } .t-teal { fill: #3FC1A5; } .t-orange { fill: #E07B39; } .t-muted { fill: #8FA0B8; }
+.t-kw { fill: #D0662A; font-weight: 600; }
+.t-code { font-size: 14.5px; } .t-sm { font-size: 12.5px; } .t-xs { font-size: 10.5px; } .t-bold { font-weight: 600; }
+
+/* animations only run on the visible stage, and replay each time it is selected */
+.art .ln, .art .pop, .art .fly, .art .grow { opacity: 0; }
+.art.on .ln { animation: artLine .5s var(--ease) both; animation-delay: var(--d, 0s); }
+@keyframes artLine { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: none; } }
+.art .pop { transform-box: fill-box; transform-origin: center; }
+.art.on .pop { animation: artPop .55s cubic-bezier(.3, 1.5, .5, 1) both; animation-delay: var(--d, 0s); }
+@keyframes artPop { from { opacity: 0; transform: scale(.4); } to { opacity: 1; transform: none; } }
+.art .draw { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.art.on .draw { animation: artDraw .9s var(--ease) forwards; animation-delay: var(--d, 0s); }
+@keyframes artDraw { to { stroke-dashoffset: 0; } }
+.art.on .fly { animation: artFly .7s var(--ease) both; animation-delay: var(--d, 0s); }
+@keyframes artFly { from { opacity: 0; transform: translate(var(--fx, 0), var(--fy, 0)) rotate(-12deg); } to { opacity: 1; transform: none; } }
+.art .grow { transform-box: fill-box; transform-origin: left center; }
+.art.on .grow { animation: artGrow .8s var(--ease) both; animation-delay: var(--d, 0s); }
+@keyframes artGrow { from { opacity: 0; transform: scaleX(0); } to { opacity: 1; transform: none; } }
+.art .critical { fill: #E5484D; }
+.art.on .critical { animation: artGrow .8s var(--ease) both .4s, artFix 1s var(--ease) 1.3s forwards; }
+@keyframes artFix { to { transform: scaleX(.82); fill: #3FC1A5; } }
+.art .cursor-blink { animation: blink 1s steps(1) infinite; }
+.art.on .scan { animation: artScan 5s ease-in-out infinite; }
+@keyframes artScan { 0%, 100% { transform: translate(0, 0); } 30% { transform: translate(140px, 10px); } 60% { transform: translate(90px, 80px); } 80% { transform: translate(10px, 70px); } }
