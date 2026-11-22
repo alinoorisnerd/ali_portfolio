@@ -58,10 +58,10 @@ window.MEDIA = {
     { type: 'image', src: 'assets/pics/03.Featured_Projects/Other_Builds/3.png', caption: '3D CAD design in Onshape for enclosure' }
   ],
   pid: [
-    { type: 'image', src: 'assets/pics/03.Featured_Projects/Other_Builds/5.JPG', caption: 'Soldered by hand, fitted inside 3D printed enclosure' },
-    { type: 'image', src: 'assets/pics/03.Featured_Projects/Other_Builds/4.JPG', caption: 'Temperature controller for SLS-Printer' },
-    { type: 'image', src: 'assets/pics/03.Featured_Projects/Other_Builds/6.JPG', caption: 'Re-engineering P.D system for the SLS-Printer' },
-    { type: 'image', src: 'assets/pics/03.Featured_Projects/Other_Builds/7.JPG', caption: 'Custom PCB for keypad and controls' }
+    { type: 'image', src: 'assets/pics/03.Featured_Projects/Other_Builds/5.jpg', caption: 'Soldered by hand, fitted inside 3D printed enclosure' },
+    { type: 'image', src: 'assets/pics/03.Featured_Projects/Other_Builds/4.jpg', caption: 'Temperature controller for SLS-Printer' },
+    { type: 'image', src: 'assets/pics/03.Featured_Projects/Other_Builds/6.jpg', caption: 'Re-engineering P.D system for the SLS-Printer' },
+    { type: 'image', src: 'assets/pics/03.Featured_Projects/Other_Builds/7.jpg', caption: 'Custom PCB for keypad and controls' }
   ],
   harp: [
     { type: 'image', src: 'assets/pics/03.Featured_Projects/Other_Builds/8.png', caption: 'Water harp playing' },
