@@ -72,7 +72,7 @@ window.MEDIA = {
     { type: 'youtube', src: 'https://youtu.be/QtNws-tsdQI', caption: 'Hotspot app demo - Summer 2026' }
   ],
   igem: [
-    { type: 'image', src: 'assets/pics/04.Leadership/1.jpg', caption: 'Team at the Grand Jamboree, Paris' },
+    { type: 'image', src: 'assets/pics/04.Leadership/3.jpg', caption: 'Team at the Grand Jamboree, Paris' },
     { type: 'image', src: 'assets/pics/04.Leadership/2.png', caption: 'Wiki landing page' }
   ],
   fll: [
